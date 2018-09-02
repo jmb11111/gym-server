@@ -56,7 +56,7 @@ app.use(
 // https://maps.googleapis.com/maps/api/directions/json?origin=30+Bangor+Street+Warwick+RI&destination=859+North+Main+Street+Providence+RI&key=${apiKey}
 
 // send a friendly greeting for the root route
-app.get("/test", (req, res) => {
+app.get("/trip-duration", (req, res) => {
   axios
     .get(
       `https://maps.googleapis.com/maps/api/directions/json?origin=30+Bangor+Street+Warwick+RI&destination=859+North+Main+Street+Providence+RI&key=${apiKey}`
