@@ -6,6 +6,7 @@ const morgan = require("morgan");
 // const mongoose = require("mongoose");
 const jsonParser = require("body-parser").json;
 const session = require("express-session");
+var mid = require("./middleware");
 
 const axios = require("axios");
 // import apiKey from "./config.js";
@@ -53,13 +54,14 @@ app.use(
     saveUninitialized: false
   })
 );
-// https://maps.googleapis.com/maps/api/directions/json?origin=30+Bangor+Street+Warwick+RI&destination=859+North+Main+Street+Providence+RI&key=${apiKey}
 
-// send a friendly greeting for the root route
-app.get("/trip-duration", (req, res) => {
+app.get("/trip-duration/:location", (req, res) => {
+  console.log(req.params.location);
   axios
     .get(
-      `https://maps.googleapis.com/maps/api/directions/json?origin=30+Bangor+Street+Warwick+RI&destination=859+North+Main+Street+Providence+RI&key=${apiKey}`
+      `https://maps.googleapis.com/maps/api/directions/json?origin=${
+        req.params.location
+      }&destination=859+North+Main+Street+Providence+RI&key=${apiKey}`
     )
     .then(response => {
       console.log(response.data);
